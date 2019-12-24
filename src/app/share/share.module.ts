@@ -6,7 +6,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, CommonModule } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
 registerLocaleData(zh);
@@ -14,17 +14,19 @@ registerLocaleData(zh);
 const nzModule = [
   NzMenuModule,
   NzLayoutModule,
-  NzIconModule
+  NzIconModule,
 ];
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    ...nzModule
+    CommonModule,
+    ...nzModule,
   ],
   exports: [
-    ...nzModule
+    CommonModule,
+    ...nzModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
 })

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "name": "Auth Test",
+    "description": "权限测试页",
+    "path": "/auth",
+    "icon": "lock",
+    "visible": true,
+    "hasChildren": true,
+    "children": [
+      {
+        "id": "2",
+        "name": "Auth Page",
+        "description": "页面权限",
+        "path": "/auth/page",
+        "icon": "",
+        "visible": true,
+        "hasChildren": false,
+        "children": []
+      },
+      {
+        "id": "3",
+        "name": "Auth Role",
+        "description": "角色权限",
+        "path": "/auth/role",
+        "icon": "",
+        "visible": true,
+        "hasChildren": false,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "component",
+    "description": "组件",
+    "path": "/component",
+    "icon": "appstore",
+    "visible": true,
+    "hasChildren": true,
+    "children": [
+      {
+        "id": "5",
+        "name": "Form",
+        "description": "表单",
+        "path": "/component/form",
+        "icon": "",
+        "visible": true,
+        "hasChildren": false,
+        "children": []
+      },
+      {
+        "id": "6",
+        "name": "Table",
+        "description": "表格",
+        "path": "/component/table",
+        "icon": "",
+        "visible": true,
+        "hasChildren": false,
+        "children": []
+      }
+    ]
+  }
+]

@@ -6,23 +6,10 @@
   </a>
 </div>
 <ul nz-menu nzTheme="dark" nzMode="inline">
-  <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-    <ul>
-      <li nz-menu-item nzMatchRouter>
-        <a routerLink="/welcome">Welcome</a>
-      </li>
-      <li nz-menu-item nzMatchRouter>
-        <a>Monitor</a>
-      </li>
-      <li nz-menu-item nzMatchRouter>
-        <a>Workplace</a>
-      </li>
-    </ul>
-  </li>
-  <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-    <ul>
-      <li nz-menu-item nzMatchRouter>
-        <a>Basic Form</a>
+  <li nz-submenu nzOpen nzTitle="menu.name" [nzIcon]="menu.icon" *ngFor="let menu of menus">
+    <ul *ngIf="menu.hasChildren">
+      <li nz-menu-item nzMatchRouter *ngFor="let child of menu.children">
+        <a routerLink="child.path">{{ child.name }}</a>
       </li>
     </ul>
   </li>
