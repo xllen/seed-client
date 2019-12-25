@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // ng-zorro组件按需引用
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
-
-import { registerLocaleData, CommonModule } from '@angular/common';
-import zh from '@angular/common/locales/zh';
-
-registerLocaleData(zh);
+import { TranslateModule } from '@ngx-translate/core';
 
 const nzModule = [
   NzMenuModule,
@@ -21,13 +17,15 @@ const nzModule = [
   declarations: [
   ],
   imports: [
+    TranslateModule.forChild(),
     CommonModule,
     ...nzModule,
   ],
   exports: [
+    TranslateModule,
     CommonModule,
     ...nzModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [],
 })
 export class ShareModule { }

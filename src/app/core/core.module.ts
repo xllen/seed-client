@@ -1,12 +1,19 @@
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { NgModule, Optional, SkipSelf, APP_INITIALIZER } from '@angular/core';
 
 import { MenuService } from './services/menu.service';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { ConfigService } from './services/config.service';
+import { StartUpService } from './services/startup.service';
 
-export function HttpLoaderFacory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
+}
+
+export function StartUpServiceFactory(startup: StartUpService) {
+  return () => startup.load('./assets/config.json')
+    .catch((error) => console.error(error.message));
 }
 
 @NgModule({
@@ -14,14 +21,24 @@ export function HttpLoaderFacory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFacory,
+        useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
     })
   ],
-  exports: [],
+  exports: [
+    TranslateModule
+  ],
   providers: [
-    MenuService
+    MenuService,
+    ConfigService,
+    StartUpService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: StartUpServiceFactory,
+      deps: [StartUpService],
+      multi: true
+    }
   ]
 })
 
