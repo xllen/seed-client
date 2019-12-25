@@ -15,10 +15,9 @@
     "eofline": true,
     "forin": true,
     "import-blacklist": [
-      true,
+      false,
       "rxjs",
-      "rxjs/Rx",
-      "devextreme-angular"
+      "rxjs/Rx"
     ],
     "import-spacing": true,
     "indent": [
@@ -130,6 +129,7 @@
     "directive-class-suffix": true,
     "ordered-imports": false,
     "trailing-comma": [false]
+
   },
   "rulesDirectory": [
     "codelyzer"
