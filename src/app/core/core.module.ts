@@ -1,9 +1,24 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { MenuService } from './services/menu.service';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+export function HttpLoaderFacory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './i18n/', '.json');
+}
 
 @NgModule({
-  imports: [],
+  imports: [
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFacory,
+        deps: [HttpClient]
+      }
+    })
+  ],
   exports: [],
   providers: [
     MenuService
