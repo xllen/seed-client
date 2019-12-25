@@ -1,4 +1,4 @@
-import { NgModule, Optional, SkipSelf, APP_INITIALIZER } from '@angular/core';
+import { NgModule, Optional, SkipSelf, APP_INITIALIZER, ErrorHandler } from '@angular/core';
 
 import { MenuService } from './services/menu.service';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +7,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ConfigService } from './services/config.service';
 import { StartUpService } from './services/startup.service';
 import { LoggerFactory } from './services/logger-factory';
+import { GlobalErrorHandler } from './services/error-handle';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -31,6 +32,10 @@ export function StartUpServiceFactory(startup: StartUpService) {
     TranslateModule
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
     MenuService,
     ConfigService,
     StartUpService,
