@@ -1,9 +1,10 @@
 import { NgModule, Optional, SkipSelf, APP_INITIALIZER, ErrorHandler } from '@angular/core';
-
-import { MenuService } from './services/menu.service';
 import { HttpClient } from '@angular/common/http';
+
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+import { MenuService } from './services/menu.service';
 import { ConfigService } from './services/config.service';
 import { StartUpService } from './services/startup.service';
 import { LoggerFactory } from './services/logger-factory';
