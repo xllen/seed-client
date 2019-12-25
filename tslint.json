@@ -128,8 +128,8 @@
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "ordered-imports": false,
-    "trailing-comma": [false]
-
+    "trailing-comma": [false],
+    "max-classes-per-file": false
   },
   "rulesDirectory": [
     "codelyzer"
