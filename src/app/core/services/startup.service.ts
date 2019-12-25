@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { en_US, zh_CN, NzI18nService } from 'ng-zorro-antd/i18n';
+import { LoggerFactory } from './logger-factory';
 
 @Injectable()
 export class StartUpService {
@@ -13,7 +14,8 @@ export class StartUpService {
   constructor(
     private config: ConfigService,
     private translate: TranslateService,
-    private nzI18n: NzI18nService
+    private nzI18n: NzI18nService,
+    private loggerFactory: LoggerFactory
   ) {}
 
   /**
@@ -24,6 +26,10 @@ export class StartUpService {
     return new Promise<any>((resolve, reject) => {
       this.config.setConfigUrl(url);
       this.config.load().subscribe(() => {
+        // 配置logger
+        this.loggerFactory.setconfig();
+        const logger = this.loggerFactory.getLogger('StartUpService');
+
         // 设置语言环境
         let lang = this.config.instant('lang');
 
@@ -38,6 +44,9 @@ export class StartUpService {
         }
 
         this.translate.use(lang);
+
+        logger.info(`current language is ${lang}`);
+        logger.info(`client startup success!`);
         resolve();
       }, (error: HttpErrorResponse) => {
         reject(error);
