@@ -9,6 +9,7 @@ import { ConfigService } from './services/config.service';
 import { StartUpService } from './services/startup.service';
 import { LoggerFactory } from './services/logger-factory';
 import { GlobalErrorHandler } from './services/error-handle';
+import { IpcRendererService } from './services/ipc-renderer.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -41,6 +42,7 @@ export function StartUpServiceFactory(startup: StartUpService) {
     ConfigService,
     StartUpService,
     LoggerFactory,
+    IpcRendererService,
     {
       provide: APP_INITIALIZER,
       useFactory: StartUpServiceFactory,

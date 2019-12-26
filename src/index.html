@@ -6,6 +6,13 @@
   <base href="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript" charset="utf-8">
+    if (typeof require === 'function') {
+      window.electron = require('electron');
+      document.addEventListener('dragover', event => event.preventDefault());
+      document.addEventListener('drop', event => event.preventDefault());
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>
