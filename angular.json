@@ -31,9 +31,15 @@
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "/themes/images",
+                "output": "/themes/images"
               }
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/themes/style/styles.less"
             ],
             "scripts": []
