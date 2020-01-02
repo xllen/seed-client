@@ -9,7 +9,7 @@
   <li nz-submenu nzOpen [nzTitle]="menu.name" [nzIcon]="menu.icon" *ngFor="let menu of menus">
     <ul *ngIf="menu.hasChildren">
       <li nz-menu-item nzMatchRouter *ngFor="let child of menu.children">
-        <a routerLink="child.path">{{ child.name }}</a>
+        <a [routerLink]="menu.path + '/' +child.path">{{ child.name }}</a>
       </li>
     </ul>
   </li>
