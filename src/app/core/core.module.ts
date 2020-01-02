@@ -10,6 +10,10 @@ import { StartUpService } from './services/startup.service';
 import { LoggerFactory } from './services/logger-factory';
 import { GlobalErrorHandler } from './services/error-handle';
 import { IpcRendererService } from './services/ipc-renderer.service';
+import { AuthGuard } from './services/router-strategy/auth-guard.service';
+import { DeactivateGuard } from './services/router-strategy/deactivate-guard.service';
+import { Dialog } from '../share/services/dialog.service';
+import { PreloadStrategy } from './services/router-strategy/preload-strategy.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -38,11 +42,15 @@ export function StartUpServiceFactory(startup: StartUpService) {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
     },
+    AuthGuard,
+    DeactivateGuard,
+    PreloadStrategy,
     MenuService,
     ConfigService,
     StartUpService,
     LoggerFactory,
     IpcRendererService,
+    Dialog,
     {
       provide: APP_INITIALIZER,
       useFactory: StartUpServiceFactory,
