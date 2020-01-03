@@ -5,11 +5,11 @@
     <h1>Ant Design Of Angular</h1>
   </a>
 </div>
-<ul nz-menu nzTheme="dark" nzMode="inline">
+<ul nz-menu nzTheme="dark" nzMode="inline" [nzSelectable]="false">
   <li nz-submenu nzOpen [nzTitle]="menu.name" [nzIcon]="menu.icon" *ngFor="let menu of menus">
     <ul *ngIf="menu.hasChildren">
       <li nz-menu-item nzMatchRouter *ngFor="let child of menu.children">
-        <a [routerLink]="menu.path + '/' +child.path">{{ child.name }}</a>
+        <a [routerLink]="menu.path + '/' +child.path" routerLinkActive="active">{{ child.name }}</a>
       </li>
     </ul>
   </li>
