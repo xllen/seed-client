@@ -1,13 +1,13 @@
 {
   "name": "seed-client",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build --output-path build --stats-json",
     "dist": "gulp version && ng build --prod",
     "upload": "gulp npmPublish",
-    "test": "ng test",
+    "test": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
